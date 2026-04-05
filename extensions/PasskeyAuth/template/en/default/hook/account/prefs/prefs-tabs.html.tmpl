@@ -1,0 +1,11 @@
+[%# Add Passkeys tab to user preferences #%]
+
+[% IF Param('user_info_class').search('PasskeyAuth') %]
+  [% tabs.push({
+       name     => "passkeys",
+       label    => "Passkeys",
+       link     => "userprefs.cgi?tab=passkeys",
+       saveable => "0",
+     })
+  %]
+[% END %]

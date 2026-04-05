@@ -1,0 +1,46 @@
+[%# User-facing error messages for the PasskeyAuth extension #%]
+
+[% IF error == "passkey_verification_failed" %]
+  [% title = "Passkey Verification Failed" %]
+  Passkey authentication could not be completed
+  [% IF reason %] ([% reason FILTER html %])[% END %].
+  Please try again.
+
+[% ELSIF error == "passkey_name_required" %]
+  [% title = "Passkey Name Required" %]
+  Please enter a name for your passkey (e.g. "MacBook Pro" or "YubiKey").
+
+[% ELSIF error == "passkey_missing_token" %]
+  [% title = "Missing Token" %]
+  The passkey registration or login session has expired. Please try again.
+
+[% ELSIF error == "passkey_invalid_token" %]
+  [% title = "Invalid Token" %]
+  The passkey session token is invalid or has expired. Please try again.
+
+[% ELSIF error == "passkey_missing_response" %]
+  [% title = "Missing Passkey Response" %]
+  The passkey response data is incomplete. Please try again.
+
+[% ELSIF error == "passkey_invalid_id" %]
+  [% title = "Invalid Passkey ID" %]
+  The specified passkey ID is not valid.
+
+[% ELSIF error == "passkey_not_found" %]
+  [% title = "Passkey Not Found" %]
+  The specified passkey was not found.
+
+[% ELSIF error == "passkey_not_owner" %]
+  [% title = "Permission Denied" %]
+  You do not have permission to modify this passkey.
+
+[% ELSIF error == "passkey_invalid_user" %]
+  [% title = "Invalid User" %]
+  The user associated with this passkey could not be found.
+
+[% ELSIF error == "passkey_limit_exceeded" %]
+  [% title = "Passkey Limit Reached" %]
+  You have reached the maximum number of registered passkeys (50).
+  Please remove an existing passkey before registering a new one.
+
+[% END %]

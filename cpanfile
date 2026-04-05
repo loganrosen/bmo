@@ -77,6 +77,10 @@ requires 'Log::Dispatch', '2.67';
 requires 'Log::Log4perl', '1.49';
 requires 'Log::Log4perl::Appender::Raven', '0.006';
 requires 'MIME::Parser', '5.406';
+
+# WebAuthn/Passkey support (PasskeyAuth extension)
+requires 'CBOR::PP';
+requires 'CryptX', '0.074';
 requires 'Math::Random::ISAAC', 'v1.0.1';
 requires 'Module::Metadata', '1.000033';
 requires 'Module::Runtime', '0.014';

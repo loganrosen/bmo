@@ -1,0 +1,12 @@
+[%# Internal error messages for the PasskeyAuth extension #%]
+
+[% IF error == "passkey_invalid_request" %]
+  [% title = "Invalid Passkey Request" %]
+  The passkey request was malformed or used an unsupported HTTP method.
+
+[% ELSIF error == "passkey_missing_param" %]
+  [% title = "Missing Parameter" %]
+  A required parameter ([% param FILTER html %]) was missing from the
+  passkey request.
+
+[% END %]

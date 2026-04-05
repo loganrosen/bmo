@@ -1,0 +1,64 @@
+[%# Passkey management preferences tab #%]
+
+[% PROCESS global/variables.none.tmpl %]
+
+<div id="passkey-prefs">
+  <p>
+    Passkeys let you sign in without a password using your device's biometric
+    sensor, security key, or screen lock.
+  </p>
+
+  [% IF !user.cryptpassword && user.mfa %]
+    <div class="passkey-notice">
+      <strong>Note:</strong> Passkey login bypasses your current MFA setup.
+      Only register passkeys on devices you trust.
+    </div>
+  [% END %]
+
+  <h3>Registered Passkeys</h3>
+
+  <div id="passkey-list">
+    <p class="passkey-loading">Loading&hellip;</p>
+  </div>
+
+  <h3>Register a New Passkey</h3>
+  <div id="passkey-register">
+    <div class="field">
+      <label for="passkey-name">Passkey name:</label>
+      <input type="text" id="passkey-name" maxlength="255"
+             placeholder="e.g. MacBook Pro, YubiKey, iPhone">
+    </div>
+    <button type="button" id="passkey-register-btn" class="passkey-btn">
+      Register passkey
+    </button>
+    <div id="passkey-register-status" style="display:none"></div>
+  </div>
+</div>
+
+<style>
+  #passkey-prefs { max-width: 600px; }
+  .passkey-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border: 1px solid #ccc; border-radius: 6px;
+    background: #f8f8f8; cursor: pointer; font-size: 14px;
+  }
+  .passkey-btn:hover { background: #eee; }
+  .passkey-error, .passkey-notice { color: #c00; margin-top: 8px; }
+  .passkey-notice { color: #856404; background: #fff3cd; padding: 8px 12px; border-radius: 4px; }
+  .passkey-success { color: #28a745; margin-top: 8px; }
+  .passkey-credential {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px;
+    margin-bottom: 8px; background: #fafafa;
+  }
+  .passkey-credential .name { font-weight: 600; }
+  .passkey-credential .meta { color: #666; font-size: 12px; }
+  .passkey-credential button {
+    background: none; border: 1px solid #c00; color: #c00;
+    padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;
+  }
+  .passkey-credential button:hover { background: #fee; }
+  .passkey-empty { color: #666; font-style: italic; }
+</style>
+
+<script src="[% basepath FILTER none %]extensions/PasskeyAuth/web/js/passkey_manage.js"></script>

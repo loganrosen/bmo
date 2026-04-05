@@ -1,0 +1,16 @@
+[%# Passkey login button - injected into the login page via additional_methods hook #%]
+
+[% IF Param('user_info_class').search('PasskeyAuth') %]
+  <div id="passkey-login-section">
+    <button type="button" id="passkey-login-btn" class="passkey-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M15 7a4 4 0 1 0-8 0 4 4 0 0 0 8 0z"/>
+        <path d="M5 21v-2a7 7 0 0 1 7-7"/>
+        <path d="M17 14l2 2 4-4"/>
+      </svg>
+      Sign in with a passkey
+    </button>
+    <div id="passkey-login-error" class="passkey-error" style="display:none"></div>
+  </div>
+  <script src="[% basepath FILTER none %]extensions/PasskeyAuth/web/js/passkey_login.js"></script>
+[% END %]
